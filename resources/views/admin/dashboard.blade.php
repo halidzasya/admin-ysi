@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="admin/style.css">
+  <link rel="stylesheet" type="text/css" href="{!! asset('admin/style.css') !!}">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -227,19 +230,21 @@
 
         <!-- Tim Yayasan -->
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-user-friends"></i>
-              <p>
+               <p>
                 Tim Yayasan
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="./" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Relawan</p>
                 </a>
+                
               </li>
               <li class="nav-item">
                 <a href="./index2.html" class="nav-link">
@@ -266,6 +271,7 @@
                 </a>
               </li>
             </ul>
+          
           </li>
 
           <!-- Tumbuh Kembang Anak -->
