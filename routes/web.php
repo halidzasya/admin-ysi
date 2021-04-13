@@ -18,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 //     });
 
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('admin.admin');
-    });
+});*/
+
+Route::get('/', 'AdminController@index');
 // // Route::get('/admin', 'AdminController@index');
 
 Route::resource('relawan', 'RelawanController');
-Route::get('/', 'RelawanController@index'); 
+Route::resource('admin', 'AdminController');
+//Route::get('/', 'RelawanController@index'); 
 
 // Route::get('/admin/timyayasan', 'AdminController@timyaysan');
 

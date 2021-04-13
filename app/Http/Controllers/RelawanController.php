@@ -14,8 +14,10 @@ class RelawanController extends Controller
      */
     public function index()
     {
-        $datas = Relawan::latest()->paginate(5);
-        return view('relawan.index',compact('datas'))->with('i', (request()->input('page', 1) - 1) * 5);
+        // $datas = Relawan::latest()->paginate(5);
+        //return view('relawan.index',compact('datas'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $datas = Relawan::get();
+        return view('relawan.index', compact('datas'));
     }
 
     /**
