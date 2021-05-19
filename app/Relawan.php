@@ -9,6 +9,6 @@ class Relawan extends Model
 
     protected $table = "relawan";
     protected $fillable = [
-    	'nama', 'email', 'status'
+    	'nama', 'jk', 'nohp', 'ttl', 'domisili', 'email', 'status'
     ];
 }

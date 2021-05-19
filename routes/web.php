@@ -22,11 +22,19 @@ use Illuminate\Support\Facades\Route;
     return view('admin.admin');
 });*/
 
-Route::get('/', 'AdminController@index');
-// // Route::get('/admin', 'AdminController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
+
+Route::resource('user', 'UserController');
+
+
+// Route::get('/', 'AdminController@index');
+// Route::get('/admin', 'AdminController@index');
 
 Route::resource('relawan', 'RelawanController');
-Route::resource('admin', 'AdminController');
+Route::resource('layout', 'AdminController');
 //Route::get('/', 'RelawanController@index'); 
 
 // Route::get('/admin/timyayasan', 'AdminController@timyaysan');

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Relawan;
+use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RelawanController extends Controller
 {
@@ -27,7 +30,7 @@ class RelawanController extends Controller
      */
     public function create()
     {
-        //
+        return view('relawan.create');
     }
 
     /**
@@ -38,7 +41,10 @@ class RelawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Relawan::create($request->all());
+        Session::flash('message', 'Berhasil ditambahkan!');
+        Session::flash('message_type', 'success');
+        return redirect()->route('relawan.index');
     }
 
     /**
@@ -47,10 +53,12 @@ class RelawanController extends Controller
      * @param  \App\Relawan  $relawan
      * @return \Illuminate\Http\Response
      */
-    public function show(Relawan $relawans)
+    public function show($id)
     {
-        //
-    }
+        $datas = Relawan::findOrFail($id);
+        return view('relawan.show', compact('datas'));
+      }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -58,11 +66,11 @@ class RelawanController extends Controller
      * @param  \App\Relawan  $relawan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Relawan $relawans)
+    public function edit($id)
     {
-        //
+        $data = Relawan::findOrFail($id);
+        return view('relawan.edit', compact('data'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -70,9 +78,14 @@ class RelawanController extends Controller
      * @param  \App\Relawan  $relawan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Relawan $relawan)
+    public function update(Request $request, $id)
     {
-        //
+        Relawan::find($id)->update($request->all());
+        Session::flash('message', 'Berhasil diubah!');
+        Session::flash('message_type', 'success');
+        return redirect()->route('relawan.index');
+
+
     }
 
     /**
@@ -81,8 +94,12 @@ class RelawanController extends Controller
      * @param  \App\Relawan  $relawan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Relawan $relawan)
+    public function destroy($id)
     {
-        //
+        Relawan::find($id)->delete();
+        Session::flash('message', 'Berhasil dihapus!');
+        Session::flash('message_type', 'success');
+        return redirect()->route('relawan.index');
+
     }
 }
