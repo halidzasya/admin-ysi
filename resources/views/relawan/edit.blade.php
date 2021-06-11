@@ -127,6 +127,7 @@ var check = function() {
                             </select>
                             </div>
                         </div>
+
                         <button type="submit" class="btn btn-primary" id="submit">
                                     Update
                         </button>

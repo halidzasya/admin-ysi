@@ -13,12 +13,12 @@ class CreateRelawanTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('relawan');
+
         Schema::create('relawan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama')->nullable();
-            $table->text('email')->nullable();
-            $table->string('status')->nullable();
+            $table->string('nama');
+            $table->text('email');
+            $table->string('status');
             $table->timestamps();
         });
     }

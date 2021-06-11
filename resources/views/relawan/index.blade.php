@@ -1,22 +1,7 @@
-@section('js')
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#table').DataTable({
-      "iDisplayLength": 50
-    });
 
-} );
-</script>
-
-<script>
-  window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-      $(this).remove();
-    });
-  }, 5000);
-</script>
-@stop
 @extends('layout.app')
+
+
 
 @section('content')
 
@@ -47,32 +32,33 @@
                   <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
                   @endif
             </div>
-                <div class="card">
+            <div class="card">
+            <div class="card-header">
+                        <h2 class="float-left">Data Relawan</h2>
+                        <div class="float-right">
+                        <a href="{{ route('relawan.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>                        </div>
+                    </div>
                     <div class="card-body ">
-                    <h3 class=" left">Data Relawan
-                    <a href="{{ route('relawan.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
-
-                    </h3>
-                    <div class="table-responsive">
-                        <table id="table" class="table table-hover text-nowrap table-bordered">
+                    <!-- <div class="table-responsive"> -->
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
+                                    <th width="110px">Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th>No Hp</th>
-                                    <th>Tgl Lahir</th>
+                                    <th width="90px">Tgl Lahir</th>
                                     <th>Domisili</th>
                                     <th>Email</th>
                                     <th>Status</th>
-                                    <th width="260px">Action</th>
+                                    <th width="180px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($datas as $data)
-                                <?php $i = 1; ?>
+                                @foreach ($datas as $i => $data)
+
                                 <tr>
-                                    <td>{{ $i++ }}</td>
+                                    <td>{{ ++$i }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td>{{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}}</td>
                                     <td>{{ $data->nohp }}</td>
@@ -106,7 +92,16 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 @endsection
 
+
+
+
+@section('js')
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+@stop

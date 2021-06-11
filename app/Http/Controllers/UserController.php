@@ -18,14 +18,17 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
-        // if(Auth::user()->level == 'user') {
-        //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-        //     return redirect()->to('/');
-        // }
-
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
 
         $datas = User::get();
         return view('auth.user', compact('datas'));
@@ -103,10 +106,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-        //         return redirect()->to('/');
-        // }
+        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
 
         $data = User::findOrFail($id);
 

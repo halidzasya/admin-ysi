@@ -42,6 +42,14 @@ class RelawanController extends Controller
     public function store(Request $request)
     {
         Relawan::create($request->all());
+        $count = Relawan::where('nama',$request->input('nama'))->count();
+
+        if($count>0){
+            Session::flash('message', 'Already exist!');
+            Session::flash('message_type', 'danger');
+            return redirect()->to('relawan');
+        }
+
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
         return redirect()->route('relawan.index');
@@ -57,7 +65,9 @@ class RelawanController extends Controller
     {
         $datas = Relawan::findOrFail($id);
         return view('relawan.show', compact('datas'));
-      }
+
+
+    }
 
 
     /**
@@ -84,8 +94,6 @@ class RelawanController extends Controller
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');
         return redirect()->route('relawan.index');
-
-
     }
 
     /**
@@ -96,10 +104,12 @@ class RelawanController extends Controller
      */
     public function destroy($id)
     {
-        Relawan::find($id)->delete();
+        $datas = Relawan::find($id);
+        $datas->delete();
+        return redirect('/');
         Session::flash('message', 'Berhasil dihapus!');
         Session::flash('message_type', 'success');
-        return redirect()->route('relawan.index');
+        // return redirect()->route('relawan.index');
 
     }
 }

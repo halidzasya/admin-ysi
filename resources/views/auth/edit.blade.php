@@ -64,7 +64,7 @@ var check = function() {
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <label for="username" class="col-md-4 control-label">Username</label>
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ $data->username }}" required readonly="">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ $data->username }}" required>
                                 @if ($errors->has('username'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('username') }}</strong>
@@ -76,7 +76,7 @@ var check = function() {
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $data->email }}" required readonly="">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $data->email }}" required >
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
