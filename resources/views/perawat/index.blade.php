@@ -27,7 +27,9 @@
             <div class="col-12">
             <div class="col-lg-12">
                   @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
+                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
                   @endif
             </div>
                 <div class="card">
@@ -47,7 +49,7 @@
                                     <th>Domisili</th>
                                     <th>Email</th>
                                     <th>Status</th>
-                                    <th width="200px">Action</th>
+                                    <th width="200px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,20 +58,22 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td class="text-capitalized">{{ $data->nama_perawat }}</td>
-                                    <td  class="text-capitalized">{{$data->jeniskelamin === "L" ? "Laki - Laki" : "Perempuan"}}</td>
+                                    <td>{{ $data->jeniskelamin === "L" ? "Laki - Laki" : "Perempuan"}}</td>
                                     <td  class="text-capitalized">{{ $data->domisili }}</td>
                                     <td  class="text-capitalized">{{ $data->email }}</td>
                                     <td>
-                                    @if($data->statuskerja == "aktif")
-                                        <label class="badge badge-warning">{{$data->statuskerja}}</label>
-                                    @else($data->statuskerja == "nonaktif")
-                                        <label class="badge badge-success">{{$data->statuskerja}}</label>
+                                    @if($data->statuskerja == "Aktif")
+                                        <label class="badge badge-success" style="font-size:12px; color:black;">{{$data->statuskerja}}</label>
+                                    @elseif($data->statuskerja == "Non Aktif")
+                                        <label class="badge badge-danger" style="font-size:12px;">{{$data->statuskerja}}</label>
+                                    @elseif($data->statuskerja == "Training")
+                                    <label class="badge badge-warning" style="font-size:12px;">{{$data->statuskerja}}</label>
                                     @endif
                                     </td>
                                     <td width="">
 		                	<a href="{!!route('perawat.show', $data->id)!!}"> <button class="btn btn-success" title="Detail"><i class="fa fa-eye"></i></button> </a>
 		                	<a href="{{route('perawat.edit', $data->id)}}"> <button class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></button> </a>
-		                	<a href="{{route('perawat.hapus',['id' => $data->id])}}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fas fa-trash"></i></button> </a>
+		                	<a href="{{route('hapusperawat', $data->id)}}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fas fa-trash"></i></button> </a>
 					                </td>
 
 

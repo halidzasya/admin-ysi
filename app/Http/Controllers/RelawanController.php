@@ -102,13 +102,14 @@ class RelawanController extends Controller
      * @param  \App\Relawan  $relawan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function hapus($id)
     {
-        $datas = Relawan::find($id);
-        $datas->delete();
-        return redirect('/');
+        Relawan::findOrFail($id)->delete();
+
+
         Session::flash('message', 'Berhasil dihapus!');
         Session::flash('message_type', 'success');
+        return redirect()->route('relawan.index');
         // return redirect()->route('relawan.index');
 
     }

@@ -52,7 +52,7 @@ var check = function() {
                       <h4 class="card-title">Edit Data Perawat</h4>
 <br></br>
                         <div class="form-group{{ $errors->has('nama_perawat') ? ' has-error' : '' }}">
-                            <label for="nama_perawat" class="col-md-4 control-label">nama_perawat</label>
+                            <label for="nama_perawat" class="col-md-4 control-label">Nama Perawat</label>
                             <div class="col-md-6">
                                 <input id="nama_perawat" type="varchar" class="form-control" name="nama_perawat" value="{{ $data->nama_perawat }}" required required >
                                 @if ($errors->has('nama_perawat'))
@@ -62,7 +62,7 @@ var check = function() {
                                 @endif
                             </div>
                         </div>
-                         <div class="form-group{{ $errors->has('jeniskelamin') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('jeniskelamin') ? ' has-error' : '' }}">
                             <label for="jeniskelamin" class="col-md-4 control-label">Jenis Kelamin</label>
                             <div class="col-md-6">
                             <select class="form-control" name="jeniskelamin" required>
@@ -71,6 +71,7 @@ var check = function() {
                             </select>
                             </div>
                         </div>
+
                         <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
                             <label for="agama" class="col-md-4 control-label">Agama</label>
                             <div class="col-md-6">
@@ -160,8 +161,10 @@ var check = function() {
                             <label for="statuskerja" class="col-md-4 control-label">Status Kerja</label>
                             <div class="col-md-6">
                             <select class="form-control" name="statuskerja" required>
-                            <option value="aktif" {{ ($data->statuskerja == 'aktif') ? 'selected' : '' }}>aktif </option>
-					    	<option value="nonaktif" {{ ($data->statuskerja == 'nonaktif') ? 'selected' : '' }}>nonaktif</option>
+                            <option value="Aktif" {{ ($data->statuskerja == 'Aktif') ? 'selected' : '' }}>Aktif </option>
+					    	<option value="Non Aktif" {{ ($data->statuskerja == 'Non Aktif') ? 'selected' : '' }}>Non Aktif</option>
+                            <option value="Training" {{ ($data->statuskerja == 'Training') ? 'selected' : '' }}>Training</option>
+
                             </select>
                             </div>
                         </div>

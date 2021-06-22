@@ -37,4 +37,15 @@ class RatingController extends Controller
 
     }
 
+    public function destroy($id)
+    {
+        $dtRating = Rating::find($id);
+        $dtRating->delete();
+        return back();
+        Session::flash('message', 'Berhasil dihapus!');
+        Session::flash('message_type', 'success');
+        // return redirect()->route('relawan.index');
+
+    }
+
 }

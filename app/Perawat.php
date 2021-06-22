@@ -8,7 +8,7 @@ class Perawat extends Model
 {
     protected $table = "perawat";
     protected $fillable = [
-    	'nama_perawat','jadwal_id','jenis_kelamin', 'agama', 'nohp', 'tempatlahir', 'ttl', 'alamat',
+    	'nama_perawat','jadwal_id','jeniskelamin', 'agama', 'nohp', 'tempatlahir', 'ttl', 'alamat',
          'domisili', 'email', 'status', 'statuskerja', 'pengalaman', 'fotoktp', 'sks'
     ];
 

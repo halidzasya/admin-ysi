@@ -13,7 +13,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Relawan</li>
+                    <li class="breadcrumb-item active">Reward</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,14 +28,17 @@
             <div class="col-12">
             <div class="col-lg-12">
                   @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
+                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
                   @endif
             </div>
                 <div class="card">
                 <div class="card-header">
                         <h2 class="float-left">Reward Relawan</h2>
                         <div class="float-right">
-                        <a href="{{ route('rating.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>                        </div>
+                        <a href="{{ route('rating.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
+                        </div>
                     </div>
                     <div class="card-body ">
                     <!-- <div class="table-responsive"> -->
@@ -45,7 +48,7 @@
                                     <th>No</th>
                                     <th>Nama Relawan</th>
                                     <th >Reward</th>
-                                    <th width="200px">Action</th>
+                                    <th width="200px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,8 +65,8 @@
                                     <!-- <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" data-size="xs" disabled="" value="{{$item->rating}}"> -->
                                     </td>
                                     <td width="">
-                                       <a > <button class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></button> </a>
-                                      <a > <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fa fa-trash"></i></button> </a>
+                                       <a > <button class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></button> </a>
+                                      <a href="{{route('rating.hapus',['id' => $item->id])}}" > <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fas fa-trash"></i></button> </a>
 					                          </td>
                                 </tr>
                               @endforeach
@@ -77,13 +80,15 @@
   </div>
 
   </section>
-<form class="form-horizontal poststars"  id="addStar" method="POST">
+
+
+<!-- <form class="form-horizontal poststars"  id="addStar" method="POST">
   {{ csrf_field() }}
 <div class="form-group" id="rating-ability-wrapper">
 	    <label class="control-label" for="rating">
 	    <span class="field-label-header">Reward untuk relawan</span><br>
 	    <span class="field-label-info"></span>
-        <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
+        <input type="hidden" id="selected_rating" name="rating" value="" required="required">
         </label>
           <h2 class="bold rating-header" style="">
           <span class="selected-rating">0</span><small> / 5</small>
@@ -105,7 +110,7 @@
           </button>
       </input>
 	</div>
-</form>
+</form> -->
 
 
 @endsection
@@ -184,6 +189,10 @@ $("#input-id").rating();
   });
  });
 </script>
+<script>
+$("#input-id").rating();
+</script>
+
 @stop
 
 

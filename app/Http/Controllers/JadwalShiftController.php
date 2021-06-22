@@ -10,6 +10,11 @@ use Session;
 
 class JadwalShiftController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
     $dtPerawat = Perawat::with('jadwal')->paginate(10);

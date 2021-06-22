@@ -14,17 +14,17 @@
   <link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.addons.css')}}">
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{asset('../css/style.css')}}">
-  <link rel="stylesheet" href="{{asset('css/styles.css')}}">
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{asset('favicon.ico')  }}" />
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <link href="/css/style.css" type="text/css" rel="stylesheet">
 
 </head>
 
-<body style=" background: linear-gradient(to right, #66ffff 0%, #ccccff 100%);">
+<body style=" background: #008888;">
 <form method="POST" action="{{ route('login') }}">
 {{ csrf_field() }}
   <div class="container fluid align-item-center " >
@@ -41,11 +41,11 @@
                       <!-- <label class="label">Username</label> -->
                       <div class="input-group" >
                       <div class="input-group-append">
-                          <span class="input-group-text" style="background-color:#007bff; ">
+                          <span class="input-group-text" style="background-color:#008888; ">
                             <i class="fas fa-user" style="color:white;"></i>
                           </span>
                         </div>
-                        <input id="email" placeholder="Username" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                        <input id="email" placeholder="Email/Username" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                       </div>
                         @if ($errors->has('email'))
@@ -58,7 +58,7 @@
                       <!-- <label class="label">Password</label> -->
                       <div class="input-group">
                       <div class="input-group-append" >
-                          <span class="input-group-text iconify" style="background-color:#007bff;">
+                          <span class="input-group-text iconify" style="background-color:#008888;">
                           <i class="fas fa-key" style="color:white;"></i>
                             <!-- <i class="mdi mdi-check-circle-outline"></i> -->
                           </span>
@@ -73,10 +73,10 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-primary submit-btn btn-block" type="submit">Login</button>
+                      <button class="btn  submit-btn btn-block" style="background:#008888; color:white;" type="submit">Login</button>
                     </div>
             </div>
-            <p class=" footer-text text-center" style="margin-top: 20px;color: #308ee0">Copyright © {{date('Y')}} Sistem Manajemen YSI</p>
+            <p class=" footer-text text-center" style="margin-top: 20px;color: black;">Copyright © {{date('Y')}} Sistem Manajemen YSI</p>
           </div>
         </div>
       </div>

@@ -30,18 +30,29 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index');
 
 Route::resource('user', 'UserController');
+Route::get('hapususer/{id}', 'UserController@destroy')->name('hapususer');
 
 
 Route::resource('relawan', 'RelawanController');
+Route::get('hapusrelawan/{id}', 'RelawanController@hapus')->name('hapusrelawan');
+
 Route::resource('perawat', 'PerawatController');
-Route::get('/hapus/{id}', 'PerawatController@destroy')->name('perawat.hapus');
+Route::get('hapusperawat/{id}', 'PerawatController@hapus')->name('hapusperawat');
 
 Route::resource('layout', 'AdminController');
 Route::resource('jadwal', 'JadwalController');
 Route::resource('jadwal_kerja', 'JadwalKerjaController');
 Route::resource('jadwal_shift', 'JadwalShiftController');
+
+// Route::get('/absensi', 'AbsenController@index');
+// Route::post('/absen', 'AbsenController@absen');
+
 Route::resource('absensi', 'AbsensiRelawanController');
+Route::get('hapusabsensi/{id}', 'AbsensiRelawanController@hapus')->name('hapusabsensi');
+
 Route::resource('rating', 'RatingController');
+Route::get('/hapus/{id}', 'RatingController@destroy')->name('rating.hapus');
+
 
 // Route::get('/{id}', 'JadwalKerja@create')->name('jadwal_kerja.create');
 // Route::post('/{id}', 'JadwalKerja@store')->name('jadwal_kerja.simpan');

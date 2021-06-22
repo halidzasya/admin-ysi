@@ -8,7 +8,8 @@ use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
-use RealRashid\SweetAlert\Facades\Alert;
+use Alert;
+
 
 class UserController extends Controller
 {
@@ -181,15 +182,19 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::user()->id != $id) {
-            $user_data = User::findOrFail($id);
-            $user_data->delete();
-            Session::flash('message', 'Berhasil dihapus!');
-            Session::flash('message_type', 'success');
-        } else {
-            Session::flash('message', 'Akun anda sendiri tidak bisa dihapus!');
-            Session::flash('message_type', 'danger');
-        }
+        User::findOrFail($id)->delete();
+        // if(Auth::user()->id != $id) {
+        //     $user_data = User::findOrFail($id);
+        //     $user_data->delete();
+        //     Session::flash('message', 'Berhasil dihapus!');
+        //     Session::flash('message_type', 'success');
+        // } else {
+        //     Session::flash('message', 'Akun anda sendiri tidak bisa dihapus!');
+        //     Session::flash('message_type', 'danger');
+        // }
+
+        Session::flash('message', 'Berhasil dihapus!');
+        Session::flash('message_type', 'success');
         return redirect()->to('user');
     }
 }

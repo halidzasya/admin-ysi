@@ -1,50 +1,35 @@
-@section('js')
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#table').DataTable({
-      "iDisplayLength": 50
-    });
 
-} );
-</script>
-@stop
 @extends('layout.app')
 
 @section('content')
-<div class="row">
-  <div class="col-lg-2">
-    <a href="{{ route('user.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah User</a>
-  </div>
-    <div class="col-lg-12">
-                  @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
-                  @endif
-                  </div>
-</div>
-<div class="row" style="margin-top: 20px;">
-<div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+              <div class="col-lg-12">
+                    @if (Session::has('message'))
+                    <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    @endif
+              </div>
+                <div class="card">
+                  <div class="card-header">
+                          <h2 class="float-left">Data Users</h2>
+                          <div class="float-right">
+                          <a href="{{ route('user.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah User</a>
+                          </div>
+                    </div>
                 <div class="card-body">
-                  <h4 class="card-title">Data User</h4>
-                  <div class="table-responsive">
-                    <table id="table" class="table table-striped">
+                  <!-- <div class="table-responsive"> -->
+                    <table id="example" class="table table-striped "  style="width:100%">
                       <thead>
                         <tr>
-                          <th>
-                            Name
-                          </th>
-                          <th>
-                            Username
-                          </th>
-                          <th>
-                            Email
-                          </th>
-                          <th>
-                            Created At
-                          </th>
-                          <th>
-                            Action
-                          </th>
+                          <th>Name</th>
+                          <th>Username</th>
+                          <th>Email</th>
+                          <th>Level</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -67,33 +52,51 @@
                             {{$data->email}}
                           </td>
                           <td>
-                            {{$data->created_at}}
+                            {{$data->level}}
                           </td>
-                          <td>
-                           <div class="btn-group dropdown">
-                          <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action
-                          </button>
-                          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{route('user.edit', $data->id)}}"> Edit </a>
-                            <form action="{{ route('user.destroy', $data->id) }}" class="pull-left"  method="post">
+
+                          <td width="">
+		                	<a href="{{route('user.edit', $data->id)}}"> <button class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></button> </a>
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
-                            <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete
-                            </button>
-                          </form>
+		                	<a href="{{route('hapususer',['id' => $data->id])}}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fas fa-trash"></i></button> </a>
+					                </td>
 
-                          </div>
-                        </div>
-                          </td>
+
                         </tr>
                       @endforeach
                       </tbody>
                     </table>
-                  </div>
+                  <!-- </div> -->
                   {{-- {!! $datas->links() !!} --}}
                 </div>
               </div>
             </div>
           </div>
+  </section>
 @endsection
+
+@section('js')
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+<script>
+$('div.alert').delay(3000).slideUp(300);
+</script>
+
+<script>
+
+$("document").ready(function(){
+    setTimeout(function(){
+        $("#waktu2").remove();
+    }, 3000 );
+});
+
+</script>
+
+<script>
+$('div.alert').delay(5000).slideUp(300);
+</script>
+@stop

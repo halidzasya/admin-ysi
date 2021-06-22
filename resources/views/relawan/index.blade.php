@@ -29,7 +29,9 @@
             <div class="col-12">
             <div class="col-lg-12">
                   @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
+                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
                   @endif
             </div>
             <div class="card">
@@ -44,14 +46,12 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th width="110px">Nama</th>
+                                    <th >Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th>No Hp</th>
-                                    <th width="90px">Tgl Lahir</th>
                                     <th>Domisili</th>
-                                    <th>Email</th>
                                     <th>Status</th>
-                                    <th width="180px">Action</th>
+                                    <th width="180px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,11 +60,9 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $data->nama }}</td>
-                                    <td>{{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}}</td>
+                                    <td>{{ $data->jk === "L" ? "Laki - Laki" : "Perempuan"}}</td>
                                     <td>{{ $data->nohp }}</td>
-                                    <td>{{ $data->ttl }}</td>
                                     <td>{{ $data->domisili }}</td>
-                                    <td>{{ $data->email }}</td>
                                     <td>
                                         @if($data->Status == 'PL')
                                             Pelajar
@@ -79,7 +77,7 @@
 		                	<a href="{!!route('relawan.edit', $data->id)!!}"> <button class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></button> </a>
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
-		                	<a href="{!!route('relawan.destroy', $data->id)!!}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fa fa-trash"></i></button> </a>
+		                	<a href="{{route('hapusrelawan', $data->id)}}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fa fa-trash"></i></button> </a>
 					                </td>
 
 

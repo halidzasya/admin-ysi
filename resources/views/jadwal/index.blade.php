@@ -27,7 +27,9 @@
             <div class="col-12">
             <div class="col-lg-12">
                   @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
+                  <div class="alert alert-{{ Session::get('message_type') }}" role="alert" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
                   @endif
             </div>
                 <div class="card">
@@ -36,7 +38,10 @@
                     <div class="card-header">
                         <h2 class="float-left">Data Shift Perawat</h2>
                         <div class="float-right">
-                        <a href="{{ route('jadwal.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>                        </div>
+                        @if (isset(Auth::user()->id) && Auth::user()->level == 'admin')
+                        <a href="{{ route('jadwal.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
+                        @endif
+                        </div>
                     </div>
                     <div class="card-body ">
                     <!-- <div class="table-responsive"> -->
@@ -47,7 +52,9 @@
                                     <th>Jadwal Shift</th>
                                     <th>Jam Masuk</th>
                                     <th>Jam Keluar</th>
-                                    <th width="260px">Action</th>
+                                     @if (isset(Auth::user()->id) && Auth::user()->level == 'admin')
+                                    <th width="260px">Aksi</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,6 +65,7 @@
                                     <td>{{ $data->jadwal }}</td>
                                     <td>{{ $data->jam_masuk }}</td>
                                     <td>{{ $data->jam_keluar }}</td>
+                                    @if (isset(Auth::user()->id) && Auth::user()->level == 'admin')
                                     <td width="">
 		                	<!-- <a href="{!!route('relawan.show', $data->id)!!}"> <button class="btn btn-success" title="Detail"><i class="fa fa-eye"></i></button> </a> -->
 		                	<a href="{!!route('jadwal.edit', $data->id)!!}"> <button class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></button> </a>
@@ -65,7 +73,7 @@
                             {{ method_field('delete') }}
 		                	<a href="{!!route('relawan.destroy', $data->id)!!}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fas fa-trash"></i></button> </a>
 					                </td>
-
+                                    @endif
 
                                 </tr>
                                 @endforeach

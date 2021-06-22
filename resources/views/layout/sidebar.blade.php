@@ -1,4 +1,4 @@
-<aside class="control-sidebar-dark control-sidebar-dark main-sidebar sidebar-dark-primary elevation-4">
+<aside class="control-sidebar-dark control-sidebar-dark main-sidebar sidebar-dark-primary elevation-4" style="background-color:#005555">
 @if(Auth::user()->level )
 <div class="sidebar">
 <nav class="mt-2">
@@ -50,13 +50,13 @@
       </p>
     </a>
   </li>
-
+  @if(Auth::user()->level == 'admin')
   <!-- Tim Yayasan -->
   <li class="nav-item has-treeview">
     <a href="" class="nav-link">
       <i class="nav-icon fas fa-user-friends"></i>
       <p>
-        Tim Yayasan
+        Master Data
         <i class="right fas fa-angle-left"></i>
       </p>
     </a>
@@ -82,8 +82,8 @@
       </li>
     </ul>
   </li>
-
-  <!-- absensi -->
+  @endif
+  <!-- ABSENSI -->
   <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
       <i class="nav-icon fas fa-user-clock"></i>
@@ -102,8 +102,8 @@
 
     </ul>
   </li>
-  <!-- absensi -->
-  <li class="nav-item has-treeview">
+  <!-- JADWAL -->
+  <li class="nav-item has-treeview {{ Request::is('jadwal*') ? 'active' : '' }}">
     <a href="/" class="nav-link">
       <i class="nav-icon far fa-calendar-alt"></i>
       <p>
@@ -132,9 +132,9 @@
       </li>
        </ul>
   </li>
-    <!-- absensi -->
+    <!-- REWARD -->
     <li class="nav-item has-treeview">
-    <a href="#" class="nav-link">
+    <a href="/" class="nav-link">
       <i class="nav-icon fas fa-star-half-alt"></i>
       <p>
         Penilaian
@@ -145,17 +145,19 @@
       <li class="nav-item">
         <a href="{{route('rating.index')}}" class="nav-link active">
           <i class="far fa-circle nav-icon"></i>
-          <p>Relawan</p>
+          <p>Reward Relawan</p>
         </a>
       </li>
     </ul>
   </li>
-   <!-- absensi -->
+   <!-- SPK -->
+   @if(Auth::user()->level == 'admin')
+
    <li class="nav-item has-treeview">
     <a href="" class="nav-link">
-      <i class="nav-icon fas fa-user"></i>
+      <i class="nav-icon fas fa-user-nurse"></i>
       <p>
-        SPK Penerimaan
+        Seleksi Calon Perawat
         <i class="right fas fa-angle-left"></i>
       </p>
     </a>
@@ -163,7 +165,7 @@
       <li class="nav-item">
         <a href="{{route('alternatif')}}" class="nav-link active">
           <i class="far fa-circle nav-icon"></i>
-          <p> Alternatif </p>
+          <p> Alternatif/Calon Perawat </p>
         </a>
       </li>
       <li class="nav-item">
@@ -188,12 +190,12 @@
       <li class="nav-item">
         <a href="{{route('perhitungan')}}" class="nav-link active">
           <i class="far fa-circle nav-icon"></i>
-          <p>Hasil Ranking </p>
+          <p>Hasil Seleksi </p>
         </a>
       </li>
     </ul>
   </li>
-
+@endif
   <!-- User -->
   <!-- <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
@@ -222,3 +224,4 @@
     </div>
     </aside>
 @endif
+

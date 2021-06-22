@@ -25,63 +25,42 @@
     <!-- Small boxes (Stat box) -->
     <div class="row">
 
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info ">
-          <div class="inner">
-            <h3>{{$perawat->count()}}</h3>
-            <p>Total Perawat</p>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-info">
+              <span class="info-box-icon"><i class="fas fa-user-nurse"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Perawat</span>
+                <h4 class="info-box-number">{{$perawat->count()}}</h4>
+              </div>
+            </div>
           </div>
-          <div class="icon">
-            <i class="fas fa-user-nurse" style="color:#F9F9F9;"></i>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-success">
+              <span class="info-box-icon"><i class="fas fa-users"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Relawan</span>
+                <h4 class="info-box-number">{{$relawan->count()}}</h4>
+              </div>
+            </div>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-success">
-          <div class="inner">
-            <h3>{{$relawan->count()}}<sup style="font-size: 20px"></sup></h3>
-            <p>Total Relawan</p>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box " style="background-color:#ED8B2F; color:white;">
+              <span class="info-box-icon"><i class="fas fa-clock"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Shift Perawat</span>
+                <h4 class="info-box-number">{{$jadwal->count()}}</h4>
+              </div>
+            </div>
           </div>
-          <div class="icon">
-            <i class="fas fa-users" style="color:white;"></i>
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box " style="background-color:#D83A3A; color:white;">
+              <span class="info-box-icon"><i class="fas fa-user"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total User Register</span>
+                <h4 class="info-box-number">{{$user->count()}}</h4>
+              </div>
+            </div>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box" style="background-color:#ED8B2F; color:white;"  >
-          <div class="inner">
-            <h3>{{$user->count()}}</h3>
-            <p s>User Registrasi</p>
-          </div>
-          <div class="icon" >
-            <i class="fas  fa-user " style="color:#F9F9F9;" ></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box " style="background-color:#D83A3A; color:white;">
-          <div class="inner">
-            <h3>{{$jadwal->count()}}</h3>
-            <p> Shift Perawat</p>
-          </div>
-          <div class="icon">
-            <i class="fas fa-clock " style="color:#F9F9F9;"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
     </div>
     <!-- /.row -->
   </div><!-- /.container-fluid -->
@@ -95,7 +74,7 @@
             </div>
                 <div class="card">
                 <div class="card-header">
-                        <h2 class="float-left">Reward Relawan</h2>
+                        <h2 class="float-left">Penilaian Relawan</h2>
                         <div class="float-right">
                         <a href="{{ route('rating.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>                        </div>
                         </div>
@@ -107,7 +86,7 @@
                                     <th>No</th>
                                     <th>Nama Relawan</th>
                                     <th >Reward</th>
-                                    <th width="200px">Action</th>
+                                    <th width="150px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -117,15 +96,14 @@
                                     <td>{{ ++$i }}</td>
                                     <td class="text-capitalized">{{ $item->relawan->nama }}</td>
                                     <td >
-                                    {!! str_repeat('<i class="fa fa-star" style="color:#FDD73C;" aria-hidden="true"></i>', $item->rating) !!}
-                                    <!-- <i class="fa fa-star" value="{{$item->rating}}"> -->
+                                    {!! str_repeat('<i class="fa fa-star" style="color:#FDD73C;" aria-hidden="true"></i>', $item->rating) !!}                                    <!-- <i class="fa fa-star" value="{{$item->rating}}"> -->
                                     <!-- <input id="input-id" type="text" class="rating" data-size="xs"  value="{{$item->rating}}" > -->
                                     <!-- <input id="rating-input" type="text" value="{{$item->rating}}" title=""/> -->
                                     <!-- <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" data-size="xs" disabled="" value="{{$item->rating}}"> -->
                                     </td>
                                     <td width="">
-                                       <a > <button class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></button> </a>
-                                      <a > <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fa fa-trash"></i></button> </a>
+                                       <a > <button class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></button> </a>
+                                      <a > <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fas fa-trash"></i></button> </a>
 					                          </td>
                                 </tr>
                               @endforeach
@@ -136,6 +114,7 @@
                   </div>
                </div>
               </div>
+
   </div>
 
 </section>

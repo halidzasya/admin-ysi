@@ -10,6 +10,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class JadwalController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         // $datas = Relawan::latest()->paginate(5);

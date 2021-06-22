@@ -28,7 +28,7 @@ $(function(){
                         <div class="form-group{{ $errors->has('tanggal') ? ' has-error' : '' }}" required>
                             <label for="tanggal" class="col-md-4 control-label">Tanggal </label>
                             <div class="col-md-3">
-                                <input id="tanggal" type="date" class="form-control" name="tanggal" value="{{ old('tanggal') }}" >
+                                <input id="tanggal" type="date" class="form-control" name="tanggal"  value="{{ date('d M Y', strtotime($data->tanggal)) }}" >
                                 @if ($errors->has('tanggal'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('tanggal') }}</strong>

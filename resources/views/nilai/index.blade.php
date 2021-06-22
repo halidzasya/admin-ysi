@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="float-left">Alternatif</h2>
+                        <h2 class="float-left">Penilaian Calon Perawat</h2>
                         <div class="float-right">
-                            <a href="{{route('alternatif.create')}}" class="btn btn-success">Tambah</a>
+                            <a href="{{route('alternatif.create')}}" class="btn btn-primary"><i class="fa fa-plus mr-1"></i>Tambah Alternatif</a>
                         </div>
                     </div>
 

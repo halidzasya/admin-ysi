@@ -24,22 +24,25 @@ class PerawatController extends Controller
 
     public function store(Request $request)
     {
-        // Perawat::create($request->all());
-        Perawat::create(
-            [
-                'nama_perawat' => $request->nama_perawat,
-                'jadwal_id' => $request->jadwal_id,
-                'nohp' => $request->nohp,
-                'tempatlahir' => $request->tempatlahir,
-                'ttl' => $request->ttl,
-                'alamat' => $request->alamat,
-                'domisili' => $request->domisili,
-                'email' => $request->email,
-                'pengalaman' => $request->pengalaman,
-                'fotoktp' => $request->fotoktp,
-                'sks' => $request->sks
-            ]
-            );
+        Perawat::create($request->all());
+        // Perawat::create(
+        //     [
+        //         'nama_perawat' => $request->nama_perawat,
+        //         'jadwal_id' => $request->jadwal_id,
+        //         'jenis_kelamin' => $request->jenis_kelamin,
+        //         'nohp' => $request->nohp,
+        //         'tempatlahir' => $request->tempatlahir,
+        //         'ttl' => $request->ttl,
+        //         'alamat' => $request->alamat,
+        //         'domisili' => $request->domisili,
+        //         'email' => $request->email,
+        //         'status' => $request->status,
+        //         'statuskerja' => $request->statuskerja,
+        //         'pengalaman' => $request->pengalaman,
+        //         'fotoktp' => $request->fotoktp,
+        //         'sks' => $request->sks
+        //     ]
+        //     );
 
         if($request->file('fotoktp')) {
             $file = $request->file('fotoktp');
@@ -60,11 +63,11 @@ class PerawatController extends Controller
         }
         $count = Perawat::where('nama_perawat',$request->input('nama_perawat'))->count();
 
-        if($count>0){
-            Session::flash('message', 'Already exist!');
-            Session::flash('message_type', 'danger');
-            return redirect()->to('perawat');
-        }
+        // if($count>0){
+        //     Session::flash('message', 'Already exist!');
+        //     Session::flash('message_type', 'danger');
+        //     return redirect()->to('perawat');
+        // }
 
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
@@ -88,7 +91,7 @@ class PerawatController extends Controller
     public function update(Request $request, $id)
     {
         Perawat::find($id)->update($request->all());
-        $perawat = Perawat::find($id);
+        // $perawat = Perawat::find($id);
 
         if($request->file('fotoktp')) {
             $file = $request->file('fotoktp');
@@ -119,7 +122,7 @@ class PerawatController extends Controller
         return redirect()->route('perawat.index');
     }
 
-    public function destroy($id)
+    public function hapus($id)
     {
         $datas = Perawat::find($id);
         $datas->delete();

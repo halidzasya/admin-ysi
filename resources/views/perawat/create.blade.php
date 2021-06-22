@@ -51,7 +51,7 @@ var check = function() {
                       <h4 class="card-title">Tambah Data Perawat</h4>
 <br></br>
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                            <label for="nama_perawat" class="col-md-4 control-label">Nama_perawat</label>
+                            <label for="nama_perawat" class="col-md-4 control-label">Nama Perawat</label>
                             <div class="col-md-6">
                                 <input id="nama_perawat" type="varchar" class="form-control" name="nama_perawat" value="{{ old('nama_perawat') }}" required >
                                 @if ($errors->has('nama_perawat'))
@@ -61,7 +61,7 @@ var check = function() {
                                 @endif
                             </div>
                         </div>
-                         <div class="form-group{{ $errors->has('jeniskelamin') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('jeniskelamin') ? ' has-error' : '' }}">
                             <label for="jeniskelamin" class="col-md-4 control-label">Jenis Kelamin</label>
                             <div class="col-md-6">
                             <select class="form-control" name="jeniskelamin" required>
@@ -159,8 +159,9 @@ var check = function() {
                             <label for="statuskerja" class="col-md-4 control-label">Status</label>
                             <div class="col-md-6">
                             <select class="form-control" name="statuskerja" required>
-                            <option value="aktif" >aktif</option>
-					    	<option value="nonaktif" >nonaktif</option>
+                            <option value="Aktif" >Aktif</option>
+					    	<option value="Non Aktif" >Non Aktif</option>
+                            <option value="Training" >Training</option>
                             </select>
                             </div>
                         </div>
@@ -190,14 +191,14 @@ var check = function() {
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('pengalaman') ? ' has-error' : '' }}">
-                            <label for="jadwal_id" class="col-md-4 control-label">jadwal_id</label>
+                            <label for="jadwal_id" class="col-md-4 control-label">Jadwal Shift</label>
                             <div class="col-md-6">
-                                <input id="jadwal_id" type="text" class="form-control" name="jadwal_id" value="{{ old('jadwal_id') }}" required >
-                                @if ($errors->has('jadwal_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('jadwal_id') }}</strong>
-                                    </span>
-                                @endif
+                                <select class="form-control" name="jadwal_id" id="jadwal_id" >
+                                <option disabled value>Pilih Jadwal</option>
+                                @foreach($jad as $item)
+                                    <option value="{{$item->id}}" >{{$item->jadwal}}</option>
+                                @endforeach
+                                </select>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="submit">

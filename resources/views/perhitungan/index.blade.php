@@ -6,7 +6,7 @@
             <div class="col-md-12 card-deck">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="float-left">Hasil Analisa</h3>
+                        <h3 class="float-left">Hasil Analisis</h3>
                     </div>
 
                     <div class="card-body">
@@ -127,16 +127,18 @@
             <div class="col-md-12 card-deck mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Ranking</h3>
+                        <h3>Hasil Seleksi Calon Perawat</h3>
                     </div>
                     <div class="card-body">
+
+                    <span>*Keterangan: Total Nilai tertingi pada tabel dibawah ini akan menjadi pilihan sebagai perawat</span>
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Kode</th>
-                                        <th>Nama</th>
-                                        <th>Total</th>
+                                        <th>Nama Calon Perawat</th>
+                                        <th>Total Nilai</th>
                                         <th>Ranking</th>
                                     </tr>
                                 </thead>

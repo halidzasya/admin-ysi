@@ -36,7 +36,7 @@ var check = function() {
     </script>
 @stop
 
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 
@@ -47,7 +47,7 @@ var check = function() {
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Detail <b>{{$data->username}}</b></h4>
-                      
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
                             <div class="col-md-6">
