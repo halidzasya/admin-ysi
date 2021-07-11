@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="float-left">Tambah Alternatif</h2>
+                        <h2 class="float-left">Penilaian Calon Perawat</h2>
                         </form>
                     </div>
 
@@ -26,7 +26,7 @@
                                     </div>
                                 @endforeach
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
                             </form>
                         </div>

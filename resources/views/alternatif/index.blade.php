@@ -1,6 +1,22 @@
 @extends('layout.app')
 
 @section('content')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <!-- <h1 class="m-0 text-dark">Tim Yayasan</h1> -->
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Alternatif Calon Perawat</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -42,7 +58,7 @@
                                                 <form action="{{route('alternatif.hapus',['id' => $data->id])}}" method="POST">
                                                     @csrf
                                                     <a href="{{route('nilai')."?a=".$data->id}}" class="btn btn-info">Crip</a>
-                                                    <a href="{{route('alternatif.edit',['id' => $data->id])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                                    <a href="{{route('alternatif.edit',['id' => $data->id])}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>

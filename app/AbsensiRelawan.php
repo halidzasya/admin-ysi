@@ -9,11 +9,10 @@ class AbsensiRelawan extends Model
 
     protected $table = "absensi_relawan";
     protected $fillable = [
-    'id', 'tanggal', 'kehadiran','jam_masuk', 'jam_keluar', 'aktivitas'
+     'user_id','tanggal', 'kehadiran','jam_masuk', 'jam_keluar', 'aktivitas'
     ];
-    public function users()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'id','name');
+       return $this->belongsTo(User::class, 'user_id');
     }
-
 }

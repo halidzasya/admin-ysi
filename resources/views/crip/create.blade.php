@@ -32,7 +32,7 @@
                                     <input type="text" name="nilai_crip" class="form-control">
                                 </div>
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
                             </form>
                         </div>

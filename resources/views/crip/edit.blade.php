@@ -32,7 +32,7 @@
                                     <input type="text" name="nilai_crip" class="form-control" value="{{$crip->nilai_crip}}">
                                 </div>
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-success">Edit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>

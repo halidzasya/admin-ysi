@@ -44,23 +44,18 @@ class RelawanController extends Controller
         Relawan::create($request->all());
         $count = Relawan::where('nama',$request->input('nama'))->count();
 
-        if($count>0){
-            Session::flash('message', 'Already exist!');
-            Session::flash('message_type', 'danger');
-            return redirect()->to('relawan');
-        }
+        // if($count>0){
+        //     Session::flash('message', 'Already exist!');
+        //     Session::flash('message_type', 'danger');
+        //     return redirect()->to('relawan');
+        // }
 
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
         return redirect()->route('relawan.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Relawan  $relawan
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $datas = Relawan::findOrFail($id);
@@ -70,12 +65,7 @@ class RelawanController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Relawan  $relawan
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $data = Relawan::findOrFail($id);
@@ -113,4 +103,5 @@ class RelawanController extends Controller
         // return redirect()->route('relawan.index');
 
     }
+
 }

@@ -15,11 +15,7 @@
 
           <div class="info dropdown">
             <a class="d-block">Hello, {{Auth::user()->name}} !</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
+
           </div>
           <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
@@ -40,8 +36,7 @@
               </a>
             </div> -->
         </div>
-  <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
   <li class="nav-item">
     <a href="{{route('home')}}" class="nav-link">
       <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -64,20 +59,20 @@
     <ul class="nav nav-treeview">
       <li class="nav-item">
         <a href="{{route('relawan.index')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
+          <i class="far fa-circle nav-icon fa-xs" style="font-size:10px;" ></i>
           <p>Relawan</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{route('perawat.index')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p>Perawat</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{route('user.index')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>Data Users</p>
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
+          <p> Users</p>
         </a>
       </li>
     </ul>
@@ -94,8 +89,8 @@
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="{{route('absensi.index')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a href="{{route('absensi.index')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p>Daftar kehadiran</p>
         </a>
       </li>
@@ -103,7 +98,7 @@
     </ul>
   </li>
   <!-- JADWAL -->
-  <li class="nav-item has-treeview {{ Request::is('jadwal*') ? 'active' : '' }}">
+  <li class="nav-item has-treeview {{ Request::is('products*') ? 'active' : '' }}">
     <a href="/" class="nav-link">
       <i class="nav-icon far fa-calendar-alt"></i>
       <p>
@@ -113,20 +108,15 @@
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a  href="{{route('jadwal.index')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a  href="{{route('jadwal.index')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon " style="font-size:10px;"></i>
           <p>Shift Perawat</p>
         </a>
       </li>
-      <!-- <li class="nav-item">
-        <a href="{{route('jadwal_kerja.index')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
-          <p>Jadwal Perawat</p>
-        </a>
-      </li> -->
+
       <li class="nav-item">
-        <a href="{{route('jadwal_shift.index')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a href="{{route('jadwal_shift.index')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p>Jadwal Perawat</p>
         </a>
       </li>
@@ -143,8 +133,8 @@
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="{{route('rating.index')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a href="{{route('rating.index')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p>Reward Relawan</p>
         </a>
       </li>
@@ -163,63 +153,58 @@
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="{{route('alternatif')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a href="{{route('alternatif')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p> Alternatif/Calon Perawat </p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{route('kriteria')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a href="{{route('kriteria')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p>Kriteria </p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{route('crip')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
-          <p>Crip</p>
+        <a href="{{route('crip')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
+          <p>Crip/Skala Nilai</p>
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="{{route('nilai')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a href="{{route('nilai')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p>Penilaian </p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="{{route('perhitungan')}}" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
+        <a href="{{route('perhitungan')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
           <p>Hasil Seleksi </p>
         </a>
       </li>
     </ul>
   </li>
-@endif
-  <!-- User -->
+  <!-- REWARD -->
   <!-- <li class="nav-item has-treeview">
-    <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-user"></i>
+    <a href="/" class="nav-link">
+      <i class="nav-icon fas fa-star-half-alt"></i>
       <p>
-        Users
+        Laporan
         <i class="right fas fa-angle-left"></i>
       </p>
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="./index.html" class="nav-link active">
-          <i class="far fa-circle nav-icon"></i>
-          <p>Admin</p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="./index2.html" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>User</p>
+        <a href="{{url('laporan/perawat')}}" class="nav-link ">
+          <i class="far fa-circle nav-icon" style="font-size:10px;"></i>
+          <p>Laporan Perawat</p>
         </a>
       </li>
     </ul>
   </li> -->
+@endif
+
     </nav>
     </div>
     </aside>

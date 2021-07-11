@@ -35,13 +35,16 @@ Route::get('hapususer/{id}', 'UserController@destroy')->name('hapususer');
 
 Route::resource('relawan', 'RelawanController');
 Route::get('hapusrelawan/{id}', 'RelawanController@hapus')->name('hapusrelawan');
+Route::get('/edit/{id}', 'RelawanController@edit')->name('relawan.edit');
+Route::post('/edit/{id}', 'RelawanController@update')->name('relawan.update');
+
 
 Route::resource('perawat', 'PerawatController');
 Route::get('hapusperawat/{id}', 'PerawatController@hapus')->name('hapusperawat');
 
 Route::resource('layout', 'AdminController');
 Route::resource('jadwal', 'JadwalController');
-Route::resource('jadwal_kerja', 'JadwalKerjaController');
+// Route::resource('jadwal_kerja', 'JadwalKerjaController');
 Route::resource('jadwal_shift', 'JadwalShiftController');
 
 // Route::get('/absensi', 'AbsenController@index');
@@ -53,6 +56,9 @@ Route::get('hapusabsensi/{id}', 'AbsensiRelawanController@hapus')->name('hapusab
 Route::resource('rating', 'RatingController');
 Route::get('/hapus/{id}', 'RatingController@destroy')->name('rating.hapus');
 
+Route::get('/laporan/perawat', 'LaporanController@perawat');
+Route::get('/laporan/perawat/pdf', 'LaporanController@perawatPdf');
+Route::get('/laporan/perawat/excel', 'LaporanController@perawatExcel');
 
 // Route::get('/{id}', 'JadwalKerja@create')->name('jadwal_kerja.create');
 // Route::post('/{id}', 'JadwalKerja@store')->name('jadwal_kerja.simpan');

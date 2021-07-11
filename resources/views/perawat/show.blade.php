@@ -2,13 +2,13 @@
 @extends('layout.app')
 
 @section('content')
-	<div class="row">
+	<div class="row ">
 		  <div class="col-xs-12 col-sm-4 col-md-8">
 		  <div class="card">
 		  <div class="box box-info">
 
 		  	<div class="box-header with-border">
-              <h4 class="box-title p-2">Detail Data Relawan</h4>
+              <h4 class="box-title p-2">Detail Data Perawat</h4>
             </div>
 
 			<div class="box-body">
@@ -16,14 +16,14 @@
 					<tr>
 						<td width="35%">Nama Lengkap </td>
 						<td width="1%"> : </td>
-						<td>{{$datas->nama}}</td>
+						<td>{{$datas->nama_perawat}}</td>
 					</tr>
 					<tr>
 						<td width="35%">Jenis Kelamin</td>
 						<td width="1%"> : </td>
 						<td>
-							@if($datas->jk == 'L') Laki - Laki @endif
-							@if($datas->jk == 'P') Perempuan @endif
+							@if($datas->jeniskelamin == 'L') Laki - Laki @endif
+							@if($datas->jeniskelamin == 'P') Perempuan @endif
 						</td>
 					</tr>
 					<tr>
@@ -63,17 +63,27 @@
 						<td width="35%">Status</td>
 						<td width="1%"> : </td>
 						<td>
-							@if($datas->status == 'PL') Pelajar
-							@elseif($datas->status == 'MH') Mahasiswa
-							@else($datas->status == 'BK') Bekerja @endif
+							@if($datas->status == 'M') Menikah
+							@else($datas->status == 'BM') Bekerja @endif
 						</td>
 					</tr>
+					<tr>
+						<td width="35%">Status Kerja</td>
+						<td width="1%"> : </td>
+						<td>{{$datas->statuskerja}}</td>
+					</tr>
+					<tr>
+						<td width="35%">Penngalaman</td>
+						<td width="1%"> : </td>
+						<td>{{$datas->pengalaman}}</td>
+					</tr>
+
 
 					</table>
 				<br>
 				 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-10">
-						<button type="submit" onclick="window.location='{{ route("relawan.index")}}'" class="btn btn-primary">Kembali</button>
+						<button type="submit" onclick="window.location='{{ route("perawat.index")}}'" class="btn btn-primary">Kembali</button>
 					</div>
 				</div>
 			</div>

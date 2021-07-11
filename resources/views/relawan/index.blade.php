@@ -46,7 +46,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th >Nama</th>
+                                    <th >Nama Lengkap</th>
                                     <th>Jenis Kelamin</th>
                                     <th>No Hp</th>
                                     <th>Domisili</th>
@@ -74,10 +74,11 @@
                                         </td>
                                     <td width="">
 		                	<a href="{!!route('relawan.show', $data->id)!!}"> <button class="btn btn-success" title="Detail"><i class="fa fa-eye"></i></button> </a>
-		                	<a href="{!!route('relawan.edit', $data->id)!!}"> <button class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></button> </a>
+
+                            <a href="{{route('relawan.edit',['id' => $data->id])}}"> <button class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></button> </a>
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
-		                	<a href="{{route('hapusrelawan', $data->id)}}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fa fa-trash"></i></button> </a>
+		                	<a href="{{route('hapusrelawan', $data->id)}}"> <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini ?')" title="Hapus"><i class="fas fa-trash"></i></button> </a>
 					                </td>
 
 

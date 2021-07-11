@@ -24,10 +24,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan <span class="text-danger">*</span></label>
-                                    <textarea name="keterangan" class="form-control">{{$alternatif->keterangan}}</textarea>
+                                    <textarea name="keterangan" id="keterangan"  type="text" autofocus class="form-control" >{{$alternatif->keterangan}}</textarea>
                                 </div>
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-success">Edit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>

@@ -8,11 +8,15 @@ class Relawan extends Model
 {
     protected $table = "relawan";
     protected $fillable = [
-    	'id','nama', 'jk', 'nohp', 'ttl', 'domisili', 'email', 'status', 'id_jadwal'
+    	'id','nama', 'jk', 'agama', 'nohp', 'tempatlahir',  'ttl', 'domisili', 'alamat', 'status'
     ];
     public function rating()
     {
         return $this->hasOne(Rating::class, 'relawan_id');
+    }
+    public function user()
+    {
+        return $this->hasMany(AbsensiRelawan::class);
     }
     // public function jadwalkerja()
     // {

@@ -17,7 +17,7 @@
                                 <div class="form-group">
                                     <label for="nama">Nama Relawan <span class="text-danger"></span></label>
                                     <select class="form-control select2" name="relawan_id" id="relawan_id" >
-                                            <option disabled value>Pilih Relawan</option>
+                                            <option value>-- Pilih Relawan --</option>
                                             @foreach($rel as $item)
                                                 <option value="{{$item->id}}" >{{$item->nama}}</option>
                                             @endforeach
@@ -51,7 +51,7 @@
                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                 </button>
                                             </input>
-                                            </div>
+                                        </div>
                                         <!-- <input type="radio"  name="rating" id="star2" ><label for="star2"></label>
                                         <input type="radio"  name="rating" id="star3" ><label for="star3"></label>
                                         <input type="radio"  name="rating" id="star4" ><label for="star4"></label>
@@ -63,10 +63,8 @@
                                     <!-- <input type="text" name="rating"   class="rating rating-loading" data-min="0" data-max="5" data-step="0.1"  id="input-id"/> -->
                                 </div>
 
-
-
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
 
                             </form>

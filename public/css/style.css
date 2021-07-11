@@ -1,7 +1,9 @@
 /* .form-group {
     background-color: white !important;
 } */
-
+.nav-icon {
+    font-size: 0.5rem;
+}
 .input-group {
     background-color: white !important;
     border-color: red;

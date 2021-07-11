@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2021 at 03:32 PM
+-- Generation Time: Jul 05, 2021 at 11:46 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.15
 
@@ -52,6 +52,7 @@ INSERT INTO `absen` (`id`, `user_id`, `date`, `time_in`, `time_out`, `note`) VAL
 
 CREATE TABLE `absensi_relawan` (
   `id` int(11) NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `tanggal` date NOT NULL,
   `kehadiran` enum('Hadir','Izin','Sakit') NOT NULL,
   `jam_masuk` time DEFAULT NULL,
@@ -65,21 +66,15 @@ CREATE TABLE `absensi_relawan` (
 -- Dumping data for table `absensi_relawan`
 --
 
-INSERT INTO `absensi_relawan` (`id`, `tanggal`, `kehadiran`, `jam_masuk`, `jam_keluar`, `aktivitas`, `created_at`, `updated_at`) VALUES
-(2, '2021-05-13', 'Sakit', '00:56:00', '12:59:00', 'mewarnai', '2021-05-24 10:55:00', '2021-05-24 10:55:00'),
-(4, '2021-06-14', 'Hadir', '04:34:00', '03:39:00', 'membaca dongeng', '2021-06-14 13:34:39', '2021-06-14 13:34:39'),
-(5, '2021-06-21', 'Hadir', '19:58:00', '21:55:00', 'Berlatih alat musik', '2021-06-21 05:55:13', '2021-06-21 05:55:13'),
-(6, '2021-06-21', 'Sakit', NULL, NULL, 'sakit flu', '2021-06-21 09:55:28', '2021-06-21 09:55:28'),
-(7, '2021-06-30', 'Izin', NULL, NULL, 'dsadasdas', '2021-06-21 11:19:44', '2021-06-21 11:19:44'),
-(8, '2021-06-30', 'Hadir', '01:27:00', '04:25:00', 'FAFEEE', '2021-06-21 11:25:47', '2021-06-21 11:25:47'),
-(9, '2021-06-17', 'Izin', NULL, NULL, 'DEDED', '2021-06-21 11:26:16', '2021-06-21 11:26:16'),
-(10, '2021-06-24', 'Hadir', '16:26:00', '01:26:00', 'FFSE', '2021-06-21 11:26:46', '2021-06-21 11:26:46'),
-(11, '2021-06-24', 'Hadir', NULL, NULL, 'DDSDSDAW', '2021-06-21 11:55:34', '2021-06-21 11:55:34'),
-(12, '2021-06-29', 'Sakit', '01:00:00', NULL, 'SDDDAED', '2021-06-21 11:57:30', '2021-06-21 11:57:30'),
-(13, '2021-06-24', 'Hadir', NULL, '01:03:00', 'SSA', '2021-06-21 12:00:04', '2021-06-21 12:00:04'),
-(14, '2021-06-19', 'Hadir', '02:07:00', NULL, 'IIIIIIIIII', '2021-06-21 12:05:30', '2021-06-21 12:05:30'),
-(15, '2021-06-24', 'Izin', NULL, NULL, 'HHHHHHHHH', '2021-06-21 12:09:15', '2021-06-21 12:09:15'),
-(16, '2021-06-22', 'Hadir', NULL, NULL, 'ssiiiiiiiiiii', '2021-06-22 02:04:56', '2021-06-22 02:04:56');
+INSERT INTO `absensi_relawan` (`id`, `user_id`, `tanggal`, `kehadiran`, `jam_masuk`, `jam_keluar`, `aktivitas`, `created_at`, `updated_at`) VALUES
+(17, 12, '2021-06-27', 'Hadir', '13:00:00', '16:00:00', 'dongeng', '2021-06-26 10:58:53', '2021-06-26 10:58:53'),
+(19, 12, '2021-06-28', 'Sakit', NULL, NULL, 'Isolasi Mandiri', '2021-06-27 10:17:53', '2021-06-29 08:29:50'),
+(21, 12, '2021-06-28', 'Hadir', '10:00:00', '23:00:00', 'Kreativitas kerajinan tangan', '2021-06-28 08:54:38', '2021-06-29 08:24:40'),
+(22, 14, '2021-06-27', 'Hadir', '14:00:00', '16:00:00', 'Musik tradisional', '2021-06-29 08:18:21', '2021-06-29 08:18:21'),
+(23, 14, '2021-06-29', 'Hadir', '15:00:00', '16:30:00', 'Latihan musik tradisional', '2021-06-29 08:20:03', '2021-06-29 08:20:03'),
+(24, 12, '2021-06-30', 'Hadir', '09:00:00', '11:30:00', 'Melatih seni kreativitas', '2021-06-30 06:55:02', '2021-06-30 06:55:02'),
+(25, 12, '2021-06-29', 'Hadir', '21:00:00', '11:30:00', 'Seni Kreativitas bernyanyi', '2021-06-30 06:59:59', '2021-06-30 06:59:59'),
+(26, 12, '2021-07-05', 'Hadir', '14:00:00', '15:00:00', 'kreativitas bernyanyi seni musik', '2021-07-04 10:33:30', '2021-07-04 10:33:30');
 
 -- --------------------------------------------------------
 
@@ -103,7 +98,11 @@ CREATE TABLE `alternatif` (
 INSERT INTO `alternatif` (`id`, `kode_alternatif`, `nama_alternatif`, `keterangan`, `created_at`, `updated_at`) VALUES
 (8, 'P01', 'Andin Ananda', 'Calon Perawat', '2021-05-24 22:47:03', '2021-05-24 22:47:03'),
 (12, 'P02', 'Rita Girtawan', 'Calon Perawat', '2021-06-03 03:30:56', '2021-06-03 03:30:56'),
-(13, 'P03', 'Lita Kusumawati', 'Calon Perawat', '2021-06-08 23:20:29', '2021-06-08 23:20:29');
+(13, 'P03', 'Lita Kusumawati', 'Calon Perawat', '2021-06-08 23:20:29', '2021-06-08 23:20:29'),
+(14, 'P04', 'Ida Farida', NULL, '2021-06-22 11:40:10', '2021-06-22 11:40:10'),
+(15, 'P05', 'Dila Fadila Maharani', 'Calon Perawat', '2021-06-29 09:14:32', '2021-06-29 09:14:32'),
+(16, 'P06', 'Afina', 'Calon Perawat', '2021-06-29 09:16:06', '2021-06-29 09:16:06'),
+(25, 'P07', 'Clara Ifani', 'Calon Perawat', '2021-06-30 12:06:51', '2021-06-30 12:06:51');
 
 -- --------------------------------------------------------
 
@@ -135,11 +134,9 @@ INSERT INTO `crip` (`id`, `kriteria_id`, `nama_crip`, `nilai_crip`, `created_at`
 (26, 2, 'Cukup', 3, '2021-06-03 03:51:37', '2021-06-03 03:51:37'),
 (27, 2, 'Baik', 4, '2021-06-03 03:52:33', '2021-06-03 03:52:33'),
 (28, 2, 'Sangat Baik', 5, '2021-06-03 03:53:17', '2021-06-03 03:53:17'),
-(29, 4, 'Sangat Kurang', 1, '2021-06-08 22:55:44', '2021-06-08 22:55:44'),
-(30, 4, 'Kurang', 2, '2021-06-08 22:56:38', '2021-06-08 22:56:38'),
-(31, 4, 'Cukup', 3, '2021-06-08 22:57:08', '2021-06-08 22:57:08'),
-(32, 4, 'Baik', 4, '2021-06-08 22:57:47', '2021-06-08 22:57:47'),
-(33, 4, 'Sangat Baik', 5, '2021-06-08 22:58:23', '2021-06-08 22:58:23'),
+(30, 4, 'Kurang', 1, '2021-06-08 22:56:38', '2021-06-29 09:07:50'),
+(31, 4, 'Cukup', 2, '2021-06-08 22:57:08', '2021-06-29 09:08:14'),
+(32, 4, 'Baik', 3, '2021-06-08 22:57:47', '2021-06-29 09:08:35'),
 (34, 5, 'Sangat Kurang', 1, '2021-06-08 23:00:10', '2021-06-08 23:00:10'),
 (35, 5, 'Kurang', 2, '2021-06-08 23:00:45', '2021-06-08 23:00:45'),
 (36, 5, 'Cukup', 3, '2021-06-08 23:01:18', '2021-06-08 23:01:18'),
@@ -269,11 +266,11 @@ CREATE TABLE `kriteria` (
 
 INSERT INTO `kriteria` (`id`, `kode`, `nama`, `atribut`, `bobot`, `created_at`, `updatad_at`) VALUES
 (1, 'K1', 'Jiwa Kasih Sayang', 'benefit', 0.2, NULL, NULL),
-(2, 'K2', 'Interaksi', 'benefit', 0.2, NULL, NULL),
+(2, 'K2', 'Interaksi', 'benefit', 0.25, NULL, NULL),
 (4, 'K3', 'Niat', 'benefit', 0.1, NULL, NULL),
 (5, 'K4', 'Perawatan', 'benefit', 0.2, NULL, NULL),
 (6, 'K5', 'Nutrisi', 'benefit', 0.15, NULL, NULL),
-(7, 'K6', 'Pendampingan Belajar', 'benefit', 0.15, NULL, NULL);
+(7, 'K6', 'Pendampingan Belajar', 'benefit', 0.1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,24 +311,54 @@ CREATE TABLE `nilai_alternatif` (
 --
 
 INSERT INTO `nilai_alternatif` (`id`, `alternatif_id`, `crip_id`) VALUES
-(5, 8, 21),
-(7, 8, 25),
-(8, 8, 31),
-(9, 8, 34),
-(10, 8, 42),
-(11, 8, 44),
-(12, 12, 21),
-(13, 12, 26),
-(14, 12, 31),
-(15, 12, 37),
-(16, 12, 40),
-(17, 12, 46),
-(18, 13, 22),
-(19, 13, 28),
-(20, 13, 32),
-(21, 13, 37),
-(22, 13, 43),
-(23, 13, 47);
+(30, 8, 21),
+(31, 8, 26),
+(32, 8, 32),
+(33, 8, 38),
+(34, 8, 41),
+(35, 8, 48),
+(36, 12, 21),
+(37, 12, 27),
+(38, 12, 30),
+(39, 12, 34),
+(40, 12, 41),
+(41, 12, 44),
+(42, 13, 2),
+(43, 13, 26),
+(44, 13, 30),
+(45, 13, 37),
+(46, 13, 42),
+(47, 13, 47),
+(48, 14, 21),
+(49, 14, 28),
+(50, 14, 32),
+(51, 14, 37),
+(52, 14, 42),
+(53, 14, 47),
+(54, 15, 23),
+(55, 15, 27),
+(56, 15, 32),
+(57, 15, 38),
+(58, 15, 42),
+(59, 15, 48),
+(60, 16, 22),
+(61, 16, 27),
+(62, 16, 32),
+(63, 16, 36),
+(64, 16, 39),
+(65, 16, 46),
+(66, 17, 22),
+(67, 17, 28),
+(68, 17, 30),
+(69, 17, 36),
+(70, 17, 41),
+(71, 17, 46),
+(72, 25, 22),
+(73, 25, 28),
+(74, 25, 31),
+(75, 25, 36),
+(76, 25, 41),
+(77, 25, 46);
 
 -- --------------------------------------------------------
 
@@ -350,7 +377,6 @@ CREATE TABLE `perawat` (
   `ttl` date NOT NULL,
   `alamat` text NOT NULL,
   `domisili` text NOT NULL,
-  `email` text NOT NULL,
   `status` enum('M','BM') NOT NULL,
   `statuskerja` varchar(30) NOT NULL,
   `pengalaman` text NOT NULL,
@@ -364,14 +390,22 @@ CREATE TABLE `perawat` (
 -- Dumping data for table `perawat`
 --
 
-INSERT INTO `perawat` (`id`, `nama_perawat`, `jadwal_id`, `jeniskelamin`, `agama`, `nohp`, `tempatlahir`, `ttl`, `alamat`, `domisili`, `email`, `status`, `statuskerja`, `pengalaman`, `fotoktp`, `sks`, `created_at`, `updated_at`) VALUES
-(2, 'kirana', 1, '', 'islam', '089671721', 'Bogor', '2021-05-19', 'Jatiwarna, Bekasi', 'Bogor', 'kirana@gmail.com', 'BM', 'Non Aktif', 'belum ada', 'C:\\xampp\\tmp\\phpFB43.tmp', 'C:\\xampp\\tmp\\phpFB44.tmp', '2021-05-31 06:26:14', '2021-06-14 08:28:21'),
-(7, 'Gustiana putri utami', 1, '', 'islam', '81288392', 'Bogor', '2021-06-10', 'Jatiwarna, Bekasi', 'Bogor', 'gustiana@gmail.com', 'M', 'Aktif', 'belum ada', 'C:\\xampp\\tmp\\phpDA9C.tmp', 'C:\\xampp\\tmp\\phpDABC.tmp', '2021-06-03 11:59:06', '2021-06-11 10:33:13'),
-(8, 'Fina  Setianingrum', 6, '', 'islam', '08191892222', 'Bekasi', '1999-06-15', 'Jatiasih, Bekasi, Jawa Barat', 'Bekasi', 'fina@gmail.com', 'BM', 'Training', 'belum ada', 'C:\\xampp\\tmp\\php4831.tmp', 'C:\\xampp\\tmp\\php4832.tmp', '2021-06-12 06:24:32', '2021-06-14 08:23:00'),
-(9, 'Afina Kurnia Putri', 8, '', 'islam', '081282272404', 'Malang', '2021-06-08', 'Batumalang, singgah no 48 RT 07/14', 'Bekasi', 'afina@gmail.com', 'BM', 'Aktif', 'belum ada', 'C:\\xampp\\tmp\\php6C2B.tmp', 'C:\\xampp\\tmp\\php6C2C.tmp', '2021-06-12 22:33:32', '2021-06-20 09:03:48'),
-(10, 'Azizah', 7, '', 'islam', '082176251612', 'Malang', '1995-07-19', 'Serangasih, Bukit bula no 45 Rt 07/02, Batumalang, Jawa Timur', 'Jakarta Selatan', 'azizah204@gmail.com', 'BM', 'Aktif', 'Perawat 1 tahun di Rs. Pelita Sehat', NULL, NULL, '2021-06-18 02:33:30', '2021-06-20 09:02:25'),
-(11, 'Rizki Yuli Yilaika', 6, 'P', 'islam', '08191818111', 'Karanganyar', '1993-06-18', 'Serangasih, Bukit bula no 45 Rt 07/02, Batumalang, Jawa Timur', 'Jakarta Barat', 'rizkiyul@gmail.com', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-18 04:48:35', '2021-06-22 03:00:30'),
-(14, 'Liana Sari', 9, 'P', 'islam', '08972671881', 'Cirebon', '2021-06-16', 'Serangasih, Bukit bula no 45 Rt 07/02, Batumalang, Jawa Timur', 'Bogor', 'liana@gmail.com', 'M', 'Training', 'belum ada', NULL, NULL, '2021-06-22 03:26:37', '2021-06-22 03:26:37');
+INSERT INTO `perawat` (`id`, `nama_perawat`, `jadwal_id`, `jeniskelamin`, `agama`, `nohp`, `tempatlahir`, `ttl`, `alamat`, `domisili`, `status`, `statuskerja`, `pengalaman`, `fotoktp`, `sks`, `created_at`, `updated_at`) VALUES
+(2, 'kirana', 1, 'P', 'islam', '089671721', 'Bogor', '2021-05-19', 'Jatiwarna, Bekasi', 'Bogor', 'BM', 'Non Aktif', 'belum ada', 'C:\\xampp\\tmp\\phpFB43.tmp', 'C:\\xampp\\tmp\\phpFB44.tmp', '2021-05-31 06:26:14', '2021-06-23 12:21:59'),
+(7, 'Sriyatun', 2, 'P', 'islam', '089128768199', 'Bogor', '1996-06-12', 'Jatiwarna, Bekasi', 'Jakarta Selatan', 'BM', 'Aktif', 'belum ada', 'C:\\xampp\\tmp\\phpDA9C.tmp', 'C:\\xampp\\tmp\\phpDABC.tmp', '2021-06-03 11:59:06', '2021-06-26 05:01:59'),
+(8, 'Azizah', 6, 'P', 'islam', '08191892222', 'Bekasi', '1999-06-15', 'Jatiasih, Bekasi, Jawa Barat', 'Bekasi', 'BM', 'Training', 'belum ada', 'C:\\xampp\\tmp\\php4831.tmp', 'C:\\xampp\\tmp\\php4832.tmp', '2021-06-12 06:24:32', '2021-06-25 13:52:20'),
+(9, 'Khamim', 8, 'P', 'islam', '081282272404', 'Malang', '1994-03-16', 'Batumalang, singgah no 48 RT 07/14', 'Bekasi', 'BM', 'Aktif', 'belum ada', 'C:\\xampp\\tmp\\php6C2B.tmp', 'C:\\xampp\\tmp\\php6C2C.tmp', '2021-06-12 22:33:32', '2021-06-25 13:54:03'),
+(11, 'Rizki Yuli Yilaika', 6, 'P', 'islam', '08191818111', 'Karanganyar', '1993-06-18', 'Serangasih, Bukit bula no 45 Rt 07/02, Batumalang, Jawa Timur', 'Jakarta Barat', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-18 04:48:35', '2021-06-22 03:00:30'),
+(14, 'Jurini', 9, 'P', 'islam', '08972671881', 'Cirebon', '1992-06-16', 'Serangasih, Bukit bula no 45 Rt 07/02, Batumalang, Jawa Timur', 'Cirebon', 'M', 'Training', 'belum ada', NULL, NULL, '2021-06-22 03:26:37', '2021-06-25 13:56:26'),
+(15, 'Wahyuni', 7, 'P', 'islam', '08191818111', 'Depok', '2001-08-16', 'Jatiwarna, Bekasiii', 'Bekasi', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-23 11:29:12', '2021-06-25 13:55:12'),
+(16, 'Sutriya', 1, 'P', 'islam', '08188888777', 'Bekasi', '1989-12-19', 'Serangasih, Bukit bula no 45 Rt 07/02, Batumalang, Jawa Timur', 'Jakarta Barat', 'M', 'Aktif', 'belum ada', NULL, NULL, '2021-06-25 13:57:59', '2021-06-25 13:57:59'),
+(17, 'Endang', 1, 'P', 'nonis', '08967526217', 'Tulungagung', '1984-07-11', 'Jatiwarna, Bekasiii', 'Jakarta Selatan', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-25 13:59:32', '2021-06-25 13:59:32'),
+(18, 'Tri Lestari', 1, 'P', 'islam', '08972661271', 'Yogyakarta', '1993-02-08', 'Jatiasih, Bekasi, Jawa Barat', 'Jakarta Selatan', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-25 14:00:42', '2021-06-25 14:04:22'),
+(19, 'Reni Safitri', 1, 'P', 'islam', '081567171717', 'Jatiasih', '1997-10-14', 'Jatiasih AE 6, Bekasi, Jawa Barat', 'Jakarta Timur', 'M', 'Aktif', 'belum ada', NULL, NULL, '2021-06-25 14:01:58', '2021-06-25 14:05:00'),
+(20, 'Buriyah', 1, 'P', 'islam', '087772727272', 'Pramuka', '1996-12-05', 'Jatiasih, Bekasi, Jawa Barat', 'Jakarta Pusat', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-25 14:03:47', '2021-06-25 14:03:47'),
+(21, 'Mila', 1, 'P', 'islam', '087762661611', 'Pulogadung', '1997-01-26', 'jatiasih', 'Jakarta Barat', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-25 14:06:31', '2021-06-25 14:06:31'),
+(22, 'Mila', 1, 'P', 'islam', '087762661611', 'Pulogadung', '1997-01-26', 'jatiasih', 'Jakarta Barat', 'BM', 'Aktif', 'belum ada', NULL, NULL, '2021-06-25 14:06:31', '2021-06-25 14:06:31'),
+(23, 'Jeni Setianina', 8, 'P', 'islam', '089675128312', 'Yogyakarta', '1998-06-16', 'Jatiasih AE 6, Bekasi, Jawa Barat', 'Jakarta Selatan', 'M', 'Training', 'belum ada', NULL, NULL, '2021-06-30 06:45:30', '2021-06-30 06:45:30');
 
 -- --------------------------------------------------------
 
@@ -396,7 +430,8 @@ INSERT INTO `rating` (`id`, `rating`, `relawan_id`, `created_at`, `updated_at`) 
 (2, 4, 2, '2021-06-01 04:58:58', '2021-06-01 04:58:58'),
 (3, 5, 3, '2021-06-01 05:16:18', '2021-06-01 05:16:18'),
 (14, 4, 4, '2021-06-18 15:23:36', '2021-06-18 15:23:36'),
-(16, 3, 6, '2021-06-18 15:28:56', '2021-06-18 15:28:56');
+(16, 3, 6, '2021-06-18 15:28:56', '2021-06-18 15:28:56'),
+(17, 4, 11, '2021-06-30 06:49:31', '2021-06-30 06:49:31');
 
 -- --------------------------------------------------------
 
@@ -408,10 +443,12 @@ CREATE TABLE `relawan` (
   `id` int(10) UNSIGNED NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jk` enum('L','P') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama` enum('islam','nonis') COLLATE utf8mb4_unicode_ci NOT NULL,
   `nohp` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tempatlahir` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ttl` date NOT NULL,
   `domisili` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('PL','MH','BK') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -421,12 +458,14 @@ CREATE TABLE `relawan` (
 -- Dumping data for table `relawan`
 --
 
-INSERT INTO `relawan` (`id`, `nama`, `jk`, `nohp`, `ttl`, `domisili`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Rena Anata', 'P', '08192002325', '2021-05-11', 'Depok', 'renaanata200@gmail.com', 'MH', '2021-05-21 21:25:36', '2021-06-20 10:05:06'),
-(2, 'Ninda Hayati', 'P', '081282272404', '1999-07-02', 'Bekasi', 'nindaaahayati@gmail.com', 'MH', '2021-05-22 00:50:47', '2021-06-20 10:01:11'),
-(3, 'Adriana Kusumawati Siahaan', 'P', '08561292819', '2021-05-06', 'Jakarta Selatan', 'adriana204@gmail.com', 'MH', '2021-05-22 02:39:19', '2021-06-20 10:06:58'),
-(4, 'Bila Regina Aprlia', 'P', '089727812890', '2021-05-27', 'Bogor', 'karefa@gmail.com', 'BK', '2021-05-26 09:08:54', '2021-06-20 10:05:57'),
-(6, 'Filsa Ramadini Tia', 'P', '08191818111', '2021-05-05', 'Bandung', 'filsaramdani@gmail.com', 'PL', '2021-05-28 10:49:41', '2021-06-20 10:03:20');
+INSERT INTO `relawan` (`id`, `nama`, `jk`, `agama`, `nohp`, `tempatlahir`, `ttl`, `domisili`, `alamat`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Rena Anata', 'P', 'islam', '08192002325', 'Bogor', '2021-05-11', 'Depok', 'renaanata200@gmail.com', 'MH', '2021-05-21 21:25:36', '2021-06-23 11:11:05'),
+(2, 'Ninda Hayati', 'P', 'islam', '081282272404', '', '1999-07-02', 'Bekasi', 'nindaaahayati@gmail.com', 'MH', '2021-05-22 00:50:47', '2021-06-20 10:01:11'),
+(3, 'Adriana Kusumawati Rara', 'P', 'islam', '08561292819', 'Bogor', '2021-05-06', 'Jakarta Selatan', 'adriana204@gmail.com', 'MH', '2021-05-22 02:39:19', '2021-06-26 08:02:45'),
+(4, 'Bila Regina Aprlia', 'P', 'islam', '089727812890', '', '2021-05-27', 'Bogor', 'karefa@gmail.com', 'BK', '2021-05-26 09:08:54', '2021-06-20 10:05:57'),
+(6, 'Filsa Ramadini Tia', 'P', 'islam', '08191818111', '', '2021-05-05', 'Bandung', 'filsaramdani@gmail.com', 'PL', '2021-05-28 10:49:41', '2021-06-20 10:03:20'),
+(11, 'Sarah Maida', 'P', 'nonis', '08191818111', 'Malang', '2021-06-04', 'Bogor', 'Serangasih, Bukit bula no 45 Rt 07/02, Batumalang, Jawa Timur', 'MH', '2021-06-23 10:47:43', '2021-06-26 08:11:29'),
+(12, 'Ninda Hayati', 'P', 'islam', '081282272404', 'Yogyakarta', '1999-07-02', 'Bekasi', 'nindaaahayati@gmail.com', 'MH', '2021-06-26 07:56:16', '2021-06-26 07:56:16');
 
 -- --------------------------------------------------------
 
@@ -453,7 +492,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `gambar`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', 'admin@gmail.com', '$2y$10$0Yyqi1WFMD39nbmLlQppQ.44SS4a/5siQDgtMOLYBNGrmJ9x9MXn6', NULL, 'admin', NULL, NULL, NULL),
-(9, 'anahaaa', 'kepsek', 'surakata@gmail.com', '$2y$10$FDV8wG4oNWsUjgQeraOf3OgIKfaQ0j/lA8e/HkaFrdiqNnrixJQvO', NULL, 'user', NULL, '2021-06-22 04:59:18', '2021-06-22 05:05:39');
+(11, 'halidza', 'halidzasya', 'halidza@gmail.com', '$2y$10$epun1blqm10/muh.p/i8QeayZbbOpt9hqQ5JxX3dTWk5.OryT6ZfO', NULL, 'user', NULL, '2021-06-22 07:04:04', '2021-06-22 07:04:04'),
+(12, 'Azizah', 'azizah', 'azizah204@gmail.com', '$2y$10$yaluQdashmcUN.a4/U0UduI5ePIcmGIXYBHH7YRljidrXPSnGHFyC', NULL, 'user', NULL, '2021-06-26 00:51:44', '2021-06-26 00:51:44'),
+(13, 'Rizka', 'rizka', 'rizkayul@gmail.com', '$2y$10$nJqAIwEkVu9u0iQD4Z4clOM9iHGkQgZ2D0tWraDjoJgFa/adofML2', NULL, 'user', NULL, '2021-06-26 01:45:39', '2021-06-26 01:45:39'),
+(14, 'khamim', 'khamim', 'khamim202@gmail.com', '$2y$10$HmhVaDlRqUpwsu1F96Ua5uqSxLoXdya7c3PqNqrXKBAGhK052A/6y', NULL, 'user', NULL, '2021-06-29 08:15:25', '2021-06-29 08:15:25');
 
 --
 -- Indexes for dumped tables
@@ -469,7 +511,8 @@ ALTER TABLE `absen`
 -- Indexes for table `absensi_relawan`
 --
 ALTER TABLE `absensi_relawan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `alternatif`
@@ -573,13 +616,13 @@ ALTER TABLE `absen`
 -- AUTO_INCREMENT for table `absensi_relawan`
 --
 ALTER TABLE `absensi_relawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `alternatif`
 --
 ALTER TABLE `alternatif`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `crip`
@@ -621,31 +664,31 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `nilai_alternatif`
 --
 ALTER TABLE `nilai_alternatif`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `perawat`
 --
 ALTER TABLE `perawat`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `relawan`
 --
 ALTER TABLE `relawan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

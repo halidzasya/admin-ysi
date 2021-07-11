@@ -49,7 +49,7 @@ $(function(){
                         <button type="reset" class="btn btn-danger">
                                     Reset
                         </button>
-                        <a href="{{route('relawan.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('relawan.index')}}" class="btn btn-light pull-right">Kembali</a>
                     </div>
                   </div>
 </div>

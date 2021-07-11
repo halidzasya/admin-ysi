@@ -27,7 +27,7 @@
                                     <textarea name="keterangan" class="form-control"></textarea>
                                 </div>
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
                             </form>
                         </div>

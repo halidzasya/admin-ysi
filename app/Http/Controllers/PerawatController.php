@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Perawat;
 use App\Jadwal;
 use Session;
-
+use Excel;
 
 class PerawatController extends Controller
 {
@@ -131,6 +131,55 @@ class PerawatController extends Controller
         Session::flash('message_type', 'success');
         // return redirect()->route('relawan.index');
 
+    }
+
+    public function format()
+    {
+        $data = [['nama_perawat' => null, 'jeniskelamin' => null, 'agama' => null, 'nohp' => null, 'alamat' => null, 'domisili' => null, 'statuskerja' => null]];
+            $fileName = 'format-buku';
+
+
+        $export = Excel::create($fileName.date('Y-m-d_H-i-s'), function($excel) use($data){
+            $excel->sheet('perawat', function($sheet) use($data) {
+                $sheet->fromArray($data);
+            });
+        });
+
+        return $export->download('xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'importPerawat' => 'required'
+        ]);
+
+        if ($request->hasFile('importPerawat')) {
+            $path = $request->file('importPerawat')->getRealPath();
+
+            $data = Excel::load($path, function($reader){})->get();
+            $a = collect($data);
+
+            if (!empty($a) && $a->count()) {
+                foreach ($a as $key => $value) {
+                    $insert[] = [
+                            'nama_perawat' => $value->nama_perawat,
+                            'jeniskelamin' => $value->jeniskelamin,
+                            'agama' => $value->agama,
+                            'nohp' => $value->nohp,
+                            'alamat' => $value->alamat,
+                            'domisili' => $value->domisili,
+                            'statuskerja' => $value->statuskerja,
+                    ];
+
+                    Perawat::create($insert[$key]);
+
+                    }
+
+            };
+        }
+        alert()->success('Berhasil.','Data telah diimport!');
+        return back();
     }
 
 

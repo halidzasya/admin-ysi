@@ -12,7 +12,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Relawan</li>
+                    <li class="breadcrumb-item active">Perawat</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -47,7 +47,6 @@
                                     <th>Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Domisili</th>
-                                    <th>Email</th>
                                     <th>Status</th>
                                     <th width="200px">Aksi</th>
                                 </tr>
@@ -60,7 +59,6 @@
                                     <td class="text-capitalized">{{ $data->nama_perawat }}</td>
                                     <td>{{ $data->jeniskelamin === "L" ? "Laki - Laki" : "Perempuan"}}</td>
                                     <td  class="text-capitalized">{{ $data->domisili }}</td>
-                                    <td  class="text-capitalized">{{ $data->email }}</td>
                                     <td>
                                     @if($data->statuskerja == "Aktif")
                                         <label class="badge badge-success" style="font-size:12px; color:black;">{{$data->statuskerja}}</label>

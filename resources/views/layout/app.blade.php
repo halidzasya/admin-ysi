@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{url('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
   <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
 
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -89,10 +90,9 @@
           <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                  Log Out
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form></a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form></a>
         </li>
         <!-- Messages Dropdown Menu -->
 
@@ -283,5 +283,7 @@
   });
 </script>
 @yield('css')
+@section('css')
+@show
 </body>
 </html>

@@ -1,6 +1,22 @@
 @extends('layout.app')
 
 @section('content')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <!-- <h1 class="m-0 text-dark">Tim Yayasan</h1> -->
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Hasil Seleksi</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 card-deck">
@@ -127,7 +143,7 @@
             <div class="col-md-12 card-deck mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Hasil Seleksi Calon Perawat</h3>
+                        <h3>Hasil Akhir Seleksi Calon Perawat</h3>
                     </div>
                     <div class="card-body">
 
@@ -147,13 +163,12 @@
                                 <?php
                                 usort($rangking, function($a, $b)
                                 {
-                                    return $a['total']<=>$b['total'];
+                                    return $b['total']<=>$a['total'];
                                 });
-                                rsort($rangking);
-                                $a = 1;
+                                $total = ['total'];
+                                rsort($total);
+                                $a = count($total);
                                 ?>
-
-
 
                                     @foreach($rangking as $t)
                                         <tr>

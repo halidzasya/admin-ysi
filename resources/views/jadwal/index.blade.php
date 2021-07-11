@@ -39,7 +39,7 @@
                         <h2 class="float-left">Data Shift Perawat</h2>
                         <div class="float-right">
                         @if (isset(Auth::user()->id) && Auth::user()->level == 'admin')
-                        <a href="{{ route('jadwal.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
+                        <a href="{{ route('jadwal.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Shift</a>
                         @endif
                         </div>
                     </div>
@@ -50,8 +50,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Jadwal Shift</th>
-                                    <th>Jam Masuk</th>
-                                    <th>Jam Keluar</th>
+                                    <th>Jam Mulai</th>
+                                    <th>Jam Selesai</th>
                                      @if (isset(Auth::user()->id) && Auth::user()->level == 'admin')
                                     <th width="260px">Aksi</th>
                                     @endif
@@ -63,8 +63,8 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $data->jadwal }}</td>
-                                    <td>{{ $data->jam_masuk }}</td>
-                                    <td>{{ $data->jam_keluar }}</td>
+                                    <td>  {{ date('H:i', strtotime($data->jam_masuk)) }}</td>
+                                    <td>  {{ date('H:i', strtotime($data->jam_keluar)) }}</td>
                                     @if (isset(Auth::user()->id) && Auth::user()->level == 'admin')
                                     <td width="">
 		                	<!-- <a href="{!!route('relawan.show', $data->id)!!}"> <button class="btn btn-success" title="Detail"><i class="fa fa-eye"></i></button> </a> -->

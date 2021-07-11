@@ -35,7 +35,7 @@
                                     <input type="text" name="bobot" class="form-control" value="{{$data->bobot}}">
                                 </div>
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-success">Edit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>

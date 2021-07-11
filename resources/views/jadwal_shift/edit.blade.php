@@ -21,22 +21,22 @@ $(function(){
         {{ csrf_field() }}
         {{ method_field('put') }}
 
-<div class="row">
-            <div class="col-lg-12 d-flex align-items-stretch grid-margin">
-                <div class="col-12">
+        <div class="row justify-content-center">
+                <div class="col-md-6">
                   <div class="card">
+                  <div class="card-header">
+                      <h3>Edit Data Jadwal Perawat</h3>
+                    </div>
                   <div class="card-body">
-                      <h4 class="card-title">Edit Data Jadwal</h4>
-<br></br>
                         <div class="form-group">
-                            <label for="nama_perawat" class="col-md-4 control-label">Nama Perawat</label>
-                            <div class="col-md-6">
-                                <input id="nama_perawat" type="varchar" class="form-control" name="nama_perawat" value="{{$per->nama_perawat}}" >
+                            <label for="nama_perawat" class="col-md-4 control-label" >Nama Perawat</label>
+                            <div class="col-md-10">
+                                <input id="nama_perawat" type="varchar" readonly class="form-control" name="nama_perawat" value="{{$per->nama_perawat}}" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="jadwal" class="col-md-4 control-label">Jadwal</label>
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <select class="form-control select2" name="jadwal_id" id="jadwal_id" >
                                 <option disabled value>Pilih Jadwal</option>
                                 <option value="{{$per->jabatan_id}}" >{{$per->jadwal->jadwal}}</option>
@@ -51,12 +51,12 @@ $(function(){
                                     Update
                         </button>
 
-                        <a href="{{route('relawan.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('relawan.index')}}" class="btn btn-light pull-right">Kembali</a>
                     </div>
                   </div>
               </div>
             </div>
 
-</div>
+
 </form>
 @endsection
